@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import logo from './logo.svg';
 import FavMovList from './favMovList'
+import MovieLovers from './movieLovers'
 /*
 Use React and the data below to display a list of users alongside their favorite movies.
 
@@ -98,6 +99,22 @@ const movies = {
 };
 
 class App extends Component {
+  
+  constructor(props) {
+    super(props);
+    this.usersByMovie = {};
+
+    profiles.forEach(profile => {
+      const movieID = profile.favoriteMovieID;
+
+      if (this.usersByMovie[movieID]) {
+        this.usersByMovie[movieID].push(profile.userID);
+      } else {
+        this.usersByMovie[movieID] = [profile.userID];
+      }
+    });
+  }
+  
   render() {
     return (
       <div>
@@ -106,7 +123,14 @@ class App extends Component {
           <h1 className="App-title">ReactND - Coding Practice</h1>
         </header>
         <h2>Favorite Movies</h2>
-		< FavMovList users={users} profiles={profiles} movies={movies}/>
+		    <FavMovList users={users} profiles={profiles} movies={movies}/>
+        <h2>How Popular is Your Favorite Movie?</h2>
+        <MovieLovers 
+          users={users} 
+          profiles={profiles} 
+          movies={movies}
+          usersByMovie={this.usersByMovie}
+        />
       </div>
     );
   }
