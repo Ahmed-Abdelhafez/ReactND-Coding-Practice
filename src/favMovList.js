@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class FavMovList extends Component {
-	render() {
-    	return(
+const FavMovList = props => {
+	return(
         <ol>
-          {this.props.profiles.map((profile) => (
+          {props.profiles.map((profile) => (
 			<li key={profile.id}>
-				<p>{this.props.users[profile.userID].name} favorite movie is {this.props.movies[profile.favoriteMovieID].name}</p>
+				<p>{props.users[profile.userID].name} favorite movie is {props.movies[profile.favoriteMovieID].name}</p>
 			</li>      
         	))}
         </ol>
 	)
-    }
 }
+
 
 export default FavMovList

@@ -1,8 +1,7 @@
-import React ,{ Component } from 'react'
+import React from 'react'
 
-class MovieLovers extends Component {
-    render() {
-        const { profiles, users, movies, usersByMovie } = this.props;
+const MovieLovers = props => {
+        const { profiles, users, movies, usersByMovie } = props;
         const usersList = (id) => {
         if (!usersByMovie[id] || usersByMovie[id].length === 0){
             return <p>None of the current users liked this movie.</p>
@@ -29,6 +28,5 @@ class MovieLovers extends Component {
             </ol>
         )
     } 
-}
 
 export default MovieLovers

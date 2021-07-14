@@ -97,25 +97,20 @@ const movies = {
     name: 'Get Out',
   },
 };
+  const usersByMovie = {};
 
-class App extends Component {
+  profiles.forEach(profile => {
+    const movieID = profile.favoriteMovieID;
+
+    if (usersByMovie[movieID]) {
+      usersByMovie[movieID].push(profile.userID);
+    } else {
+      usersByMovie[movieID] = [profile.userID];
+    }
+  });
+
+const App = () => {
   
-  constructor(props) {
-    super(props);
-    this.usersByMovie = {};
-
-    profiles.forEach(profile => {
-      const movieID = profile.favoriteMovieID;
-
-      if (this.usersByMovie[movieID]) {
-        this.usersByMovie[movieID].push(profile.userID);
-      } else {
-        this.usersByMovie[movieID] = [profile.userID];
-      }
-    });
-  }
-  
-  render() {
     return (
       <div>
         <header className="App-header">
@@ -129,11 +124,10 @@ class App extends Component {
           users={users} 
           profiles={profiles} 
           movies={movies}
-          usersByMovie={this.usersByMovie}
+          usersByMovie={usersByMovie}
         />
       </div>
     );
   }
-}
 
 export default App;
