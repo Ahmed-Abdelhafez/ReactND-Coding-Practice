@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /Exercise-ManagingState/node_modules
+/Exercise-1-ControlledComponents/node_modules
 # testing
 /coverage
 
