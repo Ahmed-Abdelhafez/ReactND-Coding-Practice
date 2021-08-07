@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-
+/Exercise-ManagingState/node_modules
 # testing
 /coverage
 
